@@ -60,7 +60,7 @@ jobs:
       fail-fast: false # don't fail other jobs if one fails
       matrix:
         build: [ aarch64-linux] #, x86_64-win-gnu, win32-msvc aarch64-linux,
-        # include:
+        include:
         #   - build: x86_64-linux
         #     os: ubuntu-20.04
         #     rust: stable
