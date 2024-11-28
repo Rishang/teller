@@ -129,7 +129,7 @@ jobs:
       - name: Build release binary
         uses: actions-rs/cargo@v1
         env:
-          OPENSSL_DIR: "/usr/lib/aarch64-linux-gnu"
+          OPENSSL_DIR: "/usr/local/ssl/"
         with:
           use-cross: ${{ matrix.cross }}
           command: build
