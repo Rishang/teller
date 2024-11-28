@@ -124,7 +124,7 @@ jobs:
 
       - name: Install OpenSSL
         if: matrix.build == 'aarch64-linux'
-        run: sudo apt-get install libssl-dev pkg-config
+        run: sudo apt-get install libssl-dev pkg-config wget curl cargo git build-essential software-properties-common gcc-aarch64-linux-gnu openssl libssl-dev pkg-config protobuf-compiler
 
       - name: Build release binary
         uses: actions-rs/cargo@v1
