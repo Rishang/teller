@@ -59,13 +59,13 @@ jobs:
     strategy:
       fail-fast: false # don't fail other jobs if one fails
       matrix:
-        build: [x86_64-linux, aarch64-linux] #, x86_64-win-gnu, win32-msvc aarch64-linux,
-        include:
-          - build: x86_64-linux
-            os: ubuntu-20.04
-            rust: stable
-            target: x86_64-unknown-linux-gnu
-            cross: false
+        build: [ aarch64-linux] #, x86_64-win-gnu, win32-msvc aarch64-linux,
+        # include:
+        #   - build: x86_64-linux
+        #     os: ubuntu-20.04
+        #     rust: stable
+        #     target: x86_64-unknown-linux-gnu
+        #     cross: false
           
           - build: aarch64-linux
             os: ubuntu-20.04
@@ -128,6 +128,8 @@ jobs:
 
       - name: Build release binary
         uses: actions-rs/cargo@v1
+        environment:
+          OPENSSL_DIR: "/usr/lib/aarch64-linux-gnu"
         with:
           use-cross: ${{ matrix.cross }}
           command: build
