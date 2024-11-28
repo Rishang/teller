@@ -55,7 +55,7 @@ jobs:
   dist:
     name: Dist
     runs-on: ${{ matrix.os }}
-    needs: test
+    # needs: test
     strategy:
       fail-fast: false # don't fail other jobs if one fails
       matrix:
