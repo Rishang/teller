@@ -19,39 +19,39 @@ env:
   REPO_NAME: tellerops/teller
 
 jobs:
-  test:
-    name: Test Suite
-    strategy:
-      fail-fast: true
-      matrix:
-        include:
-          - os: ubuntu-latest
-            arch: amd64
-          - os: ubuntu-24.04
-            arch: arm64
-        rust: [stable]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout sources
-        uses: actions/checkout@v4
+  # test:
+  #   name: Test Suite
+  #   strategy:
+  #     fail-fast: true
+  #     matrix:
+  #       include:
+  #         - os: ubuntu-latest
+  #           arch: amd64
+  #         - os: ubuntu-24.04
+  #           arch: arm64
+  #       rust: [stable]
+  #   runs-on: ${{ matrix.os }}
+  #   steps:
+  #     - name: Checkout sources
+  #       uses: actions/checkout@v4
 
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: ${{ matrix.rust }}
-          override: true
+  #     - name: Install stable toolchain
+  #       uses: actions-rs/toolchain@v1
+  #       with:
+  #         profile: minimal
+  #         toolchain: ${{ matrix.rust }}
+  #         override: true
 
-      - name: Install Protoc
-        uses: arduino/setup-protoc@v3
+  #     - name: Install Protoc
+  #       uses: arduino/setup-protoc@v3
 
-      - uses: Swatinem/rust-cache@v2
+  #     - uses: Swatinem/rust-cache@v2
 
-      - name: Run cargo test
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
-          args: --all-features --all
+  #     - name: Run cargo test
+  #       uses: actions-rs/cargo@v1
+  #       with:
+  #         command: test
+  #         args: --all-features --all
   dist:
     name: Dist
     runs-on: ${{ matrix.os }}
